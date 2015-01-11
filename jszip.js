@@ -98,7 +98,7 @@ JSZip.prototype = (function () {
             // unicode text !
             // unicode string => binary string is a painful process, check if we can avoid it.
             if (JSZip.support.uint8array && typeof TextEncoder === "function") {
-               return TextEncoder("utf-8").encode(result);
+               return new TextEncoder("utf-8").encode(result);
             }
             if (JSZip.support.nodebuffer) {
                return new Buffer(result, "utf-8");
