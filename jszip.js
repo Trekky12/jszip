@@ -922,7 +922,7 @@ JSZip.prototype = (function () {
          // http://jsperf.com/utf8encode-vs-textencoder
          // On short strings (file names for example), the TextEncoder API is (currently) slower.
          if (JSZip.support.uint8array && typeof TextEncoder === "function") {
-            var u8 = TextEncoder("utf-8").encode(string);
+            var u8 = new TextEncoder("utf-8").encode(string);
             return JSZip.utils.transformTo("string", u8);
          }
          if (JSZip.support.nodebuffer) {
